@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 const Form = props => {
     // const [firstName, setFirstName] =useState('')
@@ -6,12 +6,14 @@ const Form = props => {
     // const [email, setEmail] =useState('')
     // const [password, setPassword] = useState('')
 
+    const { setLoggedUsers, loggedUsers } = props
+
     const [formState, setFormState] = useState({
-        firstName : '',
-        lastName : '',
-        email : '',
-        password : '',
-        confPassword : ''
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confPassword: ''
     })
 
     const [validState, setValidState] = useState({
@@ -24,30 +26,29 @@ const Form = props => {
 
 
     const handleChange = event => {
-        const {name, value} = event.target
+        const { name, value } = event.target
 
         setFormState({
-        ...formState,
-        [name] : value
+            ...formState,
+            [name]: value
         })
-        //setEmail(event.target.value)
     }
 
     const handleSubmit = event => {
         event.preventDefault()
-        if(formState.firstName.length < 2){
+        if (formState.firstName.length < 2) {
             var firstName = true
         }
-        if(formState.lastName.length < 2){
+        if (formState.lastName.length < 2) {
             var lastName = true
         }
-        if(formState.email.length < 5){
+        if (formState.email.length < 5) {
             var email = true
         }
-        if(formState.password.length < 8){
+        if (formState.password.length < 8) {
             var password = true
         }
-        if(formState.password !== formState.confPassword){
+        if (formState.password !== formState.confPassword) {
             var confPassword = true
         }
 
@@ -57,39 +58,50 @@ const Form = props => {
             lastName,
             email,
             password,
-            confPassword  
+            confPassword
+        })
+
+        setLoggedUsers([...loggedUsers, formState])
+
+        setFormState({
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            confPassword: ''
         })
     }
-    
 
 
-    return(
-        <div>
+
+    return (
+        <fieldset>
+            <legend>Form.jsx</legend>
             <form onSubmit={handleSubmit}>
                 <p>
                     First Name:
-                    <input type="text" name="firstName" onChange={handleChange} id="" />
-                    { (validState.firstName) ? <p>First Name must be at least 2 characters</p> : null }
+                    <input type="text" name="firstName" value={formState.firstName} onChange={handleChange} id="" />
+                    {(validState.firstName) ? <p>First Name must be at least 2 characters</p> : null}
                 </p>
                 <p>
                     Last Name:
-                    <input type="text" name="lastName" onChange={handleChange} id="" />
-                    { (validState.lastName) ? <p>Last Name must be at least 2 characters</p> : null }
+                    <input type="text" name="lastName" value={formState.lastName} onChange={handleChange} id="" />
+                    {(validState.lastName) ? <p>Last Name must be at least 2 characters</p> : null}
                 </p>
                 <p>
                     Email:
-                    <input type="text" name="email" onChange={handleChange} id="" />
-                    { (validState.email) ? <p>Your email must be at least 5 characters</p> : null }
+                    <input type="text" name="email" value={formState.email} onChange={handleChange} id="" />
+                    {(validState.email) ? <p>Your email must be at least 5 characters</p> : null}
                 </p>
                 <p>
                     Password:
-                    <input type="password" name="password" onChange={handleChange} id="" />
-                    { (validState.password) ? <p>Password must be at least 8 characters</p> : null }
+                    <input type="password" name="password" value={formState.password} onChange={handleChange} id="" />
+                    {(validState.password) ? <p>Password must be at least 8 characters</p> : null}
                 </p>
                 <p>
                     Confirm Password:
-                    <input type="password" name="confPassword" onChange={handleChange} id="" />
-                    { (validState.confPassword) ? <p>Passwords must match</p> : null }
+                    <input type="password" name="confPassword" value={formState.confPassword} onChange={handleChange} id="" />
+                    {(validState.confPassword) ? <p>Passwords must match</p> : null}
                 </p>
                 <button type="submit">Create User</button>
             </form>
@@ -100,8 +112,8 @@ const Form = props => {
                 <p>Password: {formState.password}</p>
                 <p>Confirm Password: {formState.confPassword}</p>
             </div>
-        </div>
+        </fieldset>
     )
-    }
+}
 
 export default Form
