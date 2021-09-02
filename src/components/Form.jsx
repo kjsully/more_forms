@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Form = props => {
     // const [firstName, setFirstName] =useState('')
@@ -75,35 +76,42 @@ const Form = props => {
 
 
     return (
-        <fieldset>
-            <legend>Form.jsx</legend>
+        <fieldset class= "bg-dark border border-primary border-2 m-2 p-3">
             <form onSubmit={handleSubmit}>
-                <p>
-                    First Name:
-                    <input type="text" name="firstName" value={formState.firstName} onChange={handleChange} id="" />
-                    {(validState.firstName) ? <p>First Name must be at least 2 characters</p> : null}
-                </p>
-                <p>
-                    Last Name:
-                    <input type="text" name="lastName" value={formState.lastName} onChange={handleChange} id="" />
-                    {(validState.lastName) ? <p>Last Name must be at least 2 characters</p> : null}
-                </p>
-                <p>
-                    Email:
-                    <input type="text" name="email" value={formState.email} onChange={handleChange} id="" />
-                    {(validState.email) ? <p>Your email must be at least 5 characters</p> : null}
-                </p>
-                <p>
-                    Password:
-                    <input type="password" name="password" value={formState.password} onChange={handleChange} id="" />
-                    {(validState.password) ? <p>Password must be at least 8 characters</p> : null}
-                </p>
-                <p>
-                    Confirm Password:
-                    <input type="password" name="confPassword" value={formState.confPassword} onChange={handleChange} id="" />
-                    {(validState.confPassword) ? <p>Passwords must match</p> : null}
-                </p>
-                <button type="submit">Create User</button>
+                <div class="row">
+                <h1>Welcome to My Form
+      </h1>
+
+                    <div class="col-3">
+
+                        <input class="form-control m-3" type="text" name="firstName" placeholder="First Name" value={formState.firstName} onChange={handleChange} id="" />
+                        {(validState.firstName) ? <p>First Name must be at least 2 characters</p> : null}
+                    </div>
+
+                    <div class="col-3">
+                        <input class="form-control m-3" type="text" name="lastName" placeholder="Last Name" value={formState.lastName} onChange={handleChange} id="" />
+                        {(validState.lastName) ? <p>Last Name must be at least 2 characters</p> : null}
+                    </div>
+
+                    <div class="col-5">
+                        <input class="form-control m-3" type="text" name="email" placeholder="Email" value={formState.email} onChange={handleChange} id="" />
+                        {(validState.email) ? <p>Your email must be at least 5 characters</p> : null}
+                    </div>
+
+                    <div class="col-5">
+                        <input class="form-control m-3" type="password" name="password" placeholder="Password" value={formState.password} onChange={handleChange} id="" />
+                        {(validState.password) ? <p>Password must be at least 8 characters</p> : null}
+                    </div>
+
+                    <div class="col-5">
+                        <input class="form-control m-3" type="password" name="confPassword" placeholder="Confirm Password" value={formState.confPassword} onChange={handleChange} id="" />
+                        {(validState.confPassword) ? <p>Passwords must match</p> : null}
+                    </div>
+                    <div class="row-2 align-items-center mb-3">
+                        <button type="submit" class="btn btn-primary">Create User</button>
+                    </div>
+
+                </div>
             </form>
             <div>
                 <p>First Name: {formState.firstName}</p>

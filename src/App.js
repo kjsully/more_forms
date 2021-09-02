@@ -12,7 +12,6 @@ const [loggedUsers, setLoggedUsers] = useState([])
 
   return (
     <fieldset>
-    <legend>App.js</legend>
       <Form setLoggedUsers={setLoggedUsers} loggedUsers={loggedUsers}/>
       {
         loggedUsers.map((user, i) => <Display key={i} user={user} /> )
