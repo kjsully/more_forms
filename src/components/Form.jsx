@@ -114,11 +114,11 @@ const Form = props => {
                 </div>
             </form>
             <div>
-                <p>First Name: {formState.firstName}</p>
-                <p>Last Name: {formState.lastName}</p>
-                <p>Email: {formState.email}</p>
-                <p>Password: {formState.password}</p>
-                <p>Confirm Password: {formState.confPassword}</p>
+                <p>First Name: <p class="text-success">{formState.firstName}</p></p>
+                <p>Last Name: <p class="text-success">{formState.lastName}</p></p>
+                <p>Email: <p class="text-success">{formState.email}</p></p>
+                <p>Password: <p class="text-success">{formState.password}</p></p>
+                <p>Confirm Password: <p class="text-success">{formState.confPassword}</p></p>
             </div>
         </fieldset>
     )
