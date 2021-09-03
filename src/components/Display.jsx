@@ -2,12 +2,24 @@ import React from 'react'
 
 const Display = props => {
 
-    const {user} = props
-    console.log(user)
+    const { allUsers } = props
 
-    return(
+    return (
         <fieldset>
-            <h1>{user.email} has logged in</h1>
+            <p>hello</p>
+            {
+                props.allUsers.map((user, i) => {
+                    return (
+                        <div>
+                            <li key={i}>Name: {user.firstName} {user.lastName}</li>
+                            <li key={i}>Email: {user.email} </li>
+                            <li key={i}>Password: {user.password}</li>
+                            <li key={i}>Password Confirmation: {user.passwordConf} </li>
+                        </div>
+                    )
+                }
+                )
+            }
         </fieldset>
     )
 

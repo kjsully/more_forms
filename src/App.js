@@ -8,15 +8,20 @@ import Display from './components/Display'
 
 function App() {
 
-const [loggedUsers, setLoggedUsers] = useState([])
+const [allUsers, setAllUsers] = useState([])
+
+const addNewUser = (newUserObj) => {
+  const newUsersArray = [...allUsers];
+  newUsersArray.push(newUserObj);
+  setAllUsers(newUsersArray);
+}
 
   return (
-    <fieldset>
-      <Form setLoggedUsers={setLoggedUsers} loggedUsers={loggedUsers}/>
-      {
-        loggedUsers.map((user, i) => <Display key={i} user={user} /> )
-      }
-    </fieldset>
+    <div>
+      <Form addNewUser={addNewUser}/>
+      <Display allUsers={allUsers}/>
+
+    </div>
   );
 }
 
